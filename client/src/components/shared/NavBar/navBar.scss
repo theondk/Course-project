@@ -1,0 +1,27 @@
+.tabs_wrapper {
+    position: absolute;
+    right: 20px;
+}
+
+.nav {
+    display: flex;
+    justify-content: center;
+    &__link {
+        text-decoration: none;
+        padding: 12px 16px;
+        text-transform: uppercase;
+        font-size: 0.875rem;
+        line-height: 1.25;
+        font-weight: 500;
+        display: inline-flex;
+        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+        //color: #1976d2;
+        color: #00000099;
+        min-height: 48px;
+        align-items: center;
+        &.active {
+            color: black;
+            border-bottom: 5px solid rgb(190, 53, 221);
+        }
+    }
+}
