@@ -12,14 +12,11 @@ public class TerritoryKezik {
     private int id;
     private String name;
     private String address;
+    private String description;
 
-    public TerritoryKezik() {
+    public TerritoryKezik() { }
 
-    }
-
-    public int getId() {
-        return id;
-    }
+    public int getId() { return id; }
 
     public void setId(int id) {
         this.id = id;
@@ -39,5 +36,13 @@ public class TerritoryKezik {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

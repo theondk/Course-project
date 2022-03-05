@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/territory")
@@ -17,7 +18,7 @@ public class TerritoryKezikController {
     @PostMapping("/add")
     public String add(@RequestBody TerritoryKezik territoryKezik) {
         territoryKezikService.saveTerritory(territoryKezik);
-        return "new territory was added";
+        return "new territory was created";
     }
 
     @GetMapping("/getAll")
@@ -31,7 +32,7 @@ public class TerritoryKezikController {
     }
 
     @GetMapping("/getAll/{id}")
-    public ResponseEntity<TerritoryKezik> getTerritoryById(@PathVariable Integer id) {
+    public Optional<TerritoryKezik> getTerritoryById(@PathVariable Integer id) {
         return territoryKezikService.getTerritoryById(id);
     }
 
@@ -39,5 +40,11 @@ public class TerritoryKezikController {
     public String deleteTerritroy(@PathVariable int id) {
         territoryKezikService.deleteTerritory(id);
         return "territory was deleted";
+    }
+
+    @PutMapping("/edit/{id}")
+    public String edit(@PathVariable Integer id, @RequestBody TerritoryKezik territoryKezik) {
+        territoryKezikService.editTerritory(id, territoryKezik);
+        return "territory was updated";
     }
 }

@@ -38,13 +38,21 @@ public class TerritoryKezikServiceImpl implements TerritoryKezikService {
     }
 
     @Override
-    public ResponseEntity<TerritoryKezik> getTerritoryById(Integer id) {
-        Optional<TerritoryKezik> territoryKezik = territoryKezikRepository.findById(id);
-        return new ResponseEntity<>(territoryKezik.get(), HttpStatus.OK);
+    public Optional<TerritoryKezik> getTerritoryById(Integer id) {
+        return territoryKezikRepository.findById(id);
     }
 
     @Override
     public void deleteTerritory(int id) {
         territoryKezikRepository.deleteById(id);
+    }
+
+    @Override
+    public TerritoryKezik editTerritory(int id, TerritoryKezik territoryKezik) {
+        territoryKezik.setId(id);
+        territoryKezik.setName(territoryKezik.getName());
+        territoryKezik.setAddress(territoryKezik.getAddress());
+        territoryKezik.setDescription(territoryKezik.getDescription());
+        return territoryKezikRepository.save(territoryKezik);
     }
 }

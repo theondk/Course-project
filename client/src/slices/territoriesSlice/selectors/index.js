@@ -1,0 +1,1 @@
+export const territoriesSelector = state => state.territories

@@ -1,0 +1,26 @@
+.CheckboxInput {
+    &__wrapper {
+        margin-top: 35px;
+        display: flex;
+    }
+    &__checkbox {
+        margin-right: 10px;
+        height: 18px;
+        width: 18px;
+        display: block;
+        &.error:before {
+            content: '';
+            display: block;
+            width: 18px;
+            height: 3px;
+            background: red;
+            position: relative;
+            top: 18px;
+        }
+    }
+    &__label {
+        font-weight: 400;
+        font-size: 0.875rem;
+        width: 365px;
+    }
+}

@@ -1,0 +1,41 @@
+.AuthPage {
+    padding: 16px 48px 49px 48px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 130px;
+    background: #F5F7FA;
+    border-radius: 8px;
+    &__links {
+        margin-top: 16px;
+        margin-bottom: 49px;
+    }
+    &__link {
+        padding: 16px 74px;
+        border-bottom: 1px solid #DDDDDD;
+        color: #999999;
+        font-weight: 700;
+        font-size: 1.125rem;
+        text-decoration: none;
+        &.active {
+            color: #2E1AAD;
+            padding: 15px 74px;
+            border-bottom: 2px solid #2E1AAD;
+        }
+    }
+    &__btn {
+        margin-top: 40px;
+        width: 100%;
+        padding: 16px 0;
+        border-radius: 8px;
+        background-color: #2E1AAD;
+        font-size: 1rem;
+        line-height: 1.25rem;
+        color: white;
+        border: none;
+        cursor: pointer;
+        &:hover {
+            background-color: rgb(42, 24, 159);
+        }
+    }
+}

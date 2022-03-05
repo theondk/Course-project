@@ -1,0 +1,15 @@
+.SingleTerritoryPage {
+    padding: 50px 0;
+    margin: 0 auto;
+    &__item {
+        padding: 50px 150px;
+        background-color: rgba(247, 247, 247, 0.9);
+    }
+    &__descr {
+        padding: 5px 0;
+    }
+    &__btns {
+        margin-top: 30px;
+        display: flex;
+    }
+}

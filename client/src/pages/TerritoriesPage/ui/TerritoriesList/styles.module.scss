@@ -1,0 +1,23 @@
+.TerritoriesList {
+    &__wrapper {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, minmax(60px, auto));
+        grid-auto-rows: auto;
+        gap: 40px 100px;
+    }
+    &__card {
+        padding: 10px;
+        background-color: rgb(241, 255, 255);
+        border-radius: 5px;
+        box-shadow: 10px 5px 5px rgba(0, 0, 0, .5);
+        cursor: pointer;    
+        transition: .5s all;
+        text-decoration: none;
+        color: black;
+        &:hover {
+            background-color: rgb(223, 215, 215);
+            transform: translateY(-5px);
+        }
+    }
+}
