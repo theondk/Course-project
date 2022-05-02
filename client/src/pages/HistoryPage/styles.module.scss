@@ -1,0 +1,37 @@
+.HistoryPage {
+    padding: 50px 0;
+    &__bg {
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        z-index: -1;
+        background: url(../../shared/assets/history_bg.jpg) center (center/cover) no-repeat;
+    }
+    &__title {
+        text-align: center;
+        font-size: 3rem;
+    }
+    &__items {
+        margin-top: 30px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px 20px;
+        grid-template-rows: auto;
+    }
+    &__item {
+        border-radius: 8px;
+        box-shadow: 5px 5px rgba(0, 0, 0, 0.6);
+        background-color: rgb(241, 241, 241);
+        padding: 10px;
+        list-style-type: none;
+        &_btns {
+            margin-top: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+        &_text {
+            margin-top: 5px;
+        }
+    }
+}

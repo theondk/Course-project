@@ -1,14 +1,14 @@
 import { Formik, Form } from 'formik'
-import { NavLink, useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate, Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import * as Yup from 'yup'
 import classnames from 'classnames/bind'
 
 import TextInput from 'shared/ui/TextInput'
-import { toggleAuth, rememberUsername } from 'slices/authSlice'
+import { toggleAuth, rememberUser } from 'shared/store/slices/authSlice'
+import KezikServices from 'shared/api'
 
 import styles from '../styles.module.scss'
-import KezikServices from 'shared/api'
 
 const SignIn = () => {
 	const cn = classnames.bind(styles)
@@ -24,12 +24,12 @@ const SignIn = () => {
 			onSubmit = {async (values) => {
 				try {
 					const resp = await KezikServices.login(values)
-					if (resp !== false) {
+					if (resp !== false && resp.status !== 'Ожидание активации') {
 						dispatch(toggleAuth(true))
-						dispatch(rememberUsername(values.username))
-						navigate('/territories')
+						dispatch(rememberUser({ username: values.username, id: resp.id, role: resp.role, officeId: resp.officeId }))
+						navigate('/offices')
 					} else {
-						alert('Неверный логин или пароль')
+						resp.status === 'Ожидание активации' ? alert('Дождитесь пока администратор одобрит ваш запрос на регистрацию') : alert('Неверный логин или пароль')
 					}
 				} catch(e) {
 					console.log(e)
@@ -56,6 +56,7 @@ const SignIn = () => {
 				</div>
 				<div className="auth-form__btns">
 					<button className={styles.AuthPage__btn} type="submit">Войти</button>
+					<Link className={styles.AuthPage__recover} to="/recover">Забыли пароль?</Link>
 				</div>
 			</Form>
 		</Formik>

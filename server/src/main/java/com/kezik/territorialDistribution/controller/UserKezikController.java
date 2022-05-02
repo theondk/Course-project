@@ -19,13 +19,33 @@ public class UserKezikController {
         return userKezikService.saveUser(userKezik);
     }
 
+    @PutMapping("/recover")
+    public boolean recoverPassword(@RequestBody UserKezik userKezik) {
+        return userKezikService.recoverPassword(userKezik);
+    }
+
     @GetMapping("/getAll")
     public List<UserKezik> getAllUsers() {
         return userKezikService.getAllUsers();
     }
 
     @PostMapping("/authUser")
-    public boolean authUser(@RequestBody UserKezik userKezik) {
+    public Object authUser(@RequestBody UserKezik userKezik) {
         return userKezikService.authUser(userKezik);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public String deleteUser(@PathVariable Integer id) {
+        return userKezikService.deleteUser(id);
+    }
+
+    @PutMapping("/role/handler/{id}/{motion}")
+    public String roleHandler(@PathVariable Integer id, @PathVariable String motion) {
+        return userKezikService.roleHandler(id, motion);
+    }
+
+    @PutMapping("/activate/{id}/{officeId}")
+    public String activateUser(@PathVariable Integer id, @PathVariable Integer officeId) {
+        return userKezikService.activateUser(id, officeId);
     }
 }

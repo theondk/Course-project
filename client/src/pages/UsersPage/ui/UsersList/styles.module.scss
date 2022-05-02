@@ -1,0 +1,12 @@
+.UsersList {
+    margin-top: 50px;
+    &__item {
+        margin-top: 20px;
+        padding: 10px 20px;
+        width: 100%;
+        border-radius: 8px;
+        background-color: rgba(221, 221, 221, 0.5);
+        display: flex;
+        justify-content: space-between;
+    }
+}

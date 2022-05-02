@@ -1,0 +1,15 @@
+.TaskDelete {
+    padding: 10px;
+    background-color: red;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    margin-top: 10px;
+    box-shadow: 2px 2px black;
+
+    &:hover {
+        background-color: rgb(220, 0, 0);
+        box-shadow: none;
+    }
+}

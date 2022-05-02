@@ -13,6 +13,9 @@ public class UserKezik {
     private String username;
     private String password;
     private String role;
+    private String phrase;
+    private String status;
+    private int officeId;
 
     public UserKezik() { }
 
@@ -37,4 +40,18 @@ public class UserKezik {
     }
 
     public void setRole(String role) { this.role = role; }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) { this.status = status; }
+
+    public int getOfficeId() { return officeId; }
+
+    public void setOfficeId(int officeId) { this.officeId = officeId; }
+
+    public String getPhrase() { return phrase; }
+
+    public void setPhrase(String phrase) { this.phrase = phrase; }
 }

@@ -1,0 +1,27 @@
+.OfficeTasks {
+    padding: 50px;
+    &__title {
+        text-align: center;
+        color: white;
+        font-size: 40px;
+    }
+    &__subtitle {
+        text-align: center;
+        color: white;
+        font-size: 21px;
+        margin-top: 30px;
+    }
+    &__wrapper {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: auto;
+        margin-top: 50px;
+        gap: 20px;
+    }
+    &__item {
+        list-style-type: none;
+        background: rgba(255, 255, 255, 0.9);
+        padding: 10px;
+        border-radius: 8px;
+    }
+}

@@ -3,7 +3,7 @@
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    top: 130px;
+    top: 75px;
     background: #F5F7FA;
     border-radius: 8px;
     &__links {
@@ -37,5 +37,12 @@
         &:hover {
             background-color: rgb(42, 24, 159);
         }
+    }
+    &__recover {
+        display: block;
+        margin: 10px 5px 0 0;
+        display: flex;
+        justify-content: flex-end;
+        color: rgb(42, 24, 159);
     }
 }

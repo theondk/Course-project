@@ -6,9 +6,9 @@ import { Form, Formik } from 'formik'
 
 import TextInput from 'shared/ui/TextInput'
 import CheckboxInput from 'shared/ui/CheckboxInput'
+import KezikServices from 'shared/api'
 
 import styles from '../styles.module.scss'
-import KezikServices from 'shared/api'
 
 const SignUp = () => {
 	const cn = classnames.bind(styles)
@@ -20,6 +20,7 @@ const SignUp = () => {
 				username: '',
 				password: '',
 				confirm_password: '',
+				phrase: '',
 				confirm_policy: false
 			}}
 			onSubmit = {async (values) => {
@@ -46,6 +47,10 @@ const SignUp = () => {
 				confirm_password: Yup.string()
 					.required()
 					.oneOf([Yup.ref('password'), null]),
+				phrase: Yup.string()
+					.required()
+					.min(4)
+					.max(20),
 				confirm_policy: Yup.boolean()
 					.oneOf([true])
 			})}
@@ -58,8 +63,9 @@ const SignUp = () => {
 				<div className="auth-form__inputs">
 					<TextInput label="Имя пользователя" name="username" id="username" placeholder="Имя пользователя"/>
 					<TextInput label="Пароль" type="password" name="password" id="password" placeholder="Пароль (8-16 символов)"/>
-					<TextInput label="Повторите" type="password" name="confirm_password" id="confirm_password" placeholder="Повторите пароль"/>
-					<CheckboxInput label="При нажатии вы подтвеждаете, что предоставляете доступ к вашим cookie файлам, а так же к сохранению и обработке вашей личной информации." name="confirm_policy" id="confirm_policy"/>
+					<TextInput label="Повторите пароль" type="password" name="confirm_password" id="confirm_password" placeholder="Повторите пароль"/>
+					<TextInput label="Секретное слово/фраза для восстановления пароля" name="phrase" id="phrase" placeholder="Секретное слово/фраза" />
+					<CheckboxInput label="При нажатии вы подтвеждаете, что разрешаете нам сохранить ваши личные данные, а так же подтверждаете их дальнейшую обработку и использование." name="confirm_policy" id="confirm_policy"/>
 				</div>
 				<div className="auth-form__btns">
 					<button className={styles.AuthPage__btn} type="submit">Зарегистрироваться</button>

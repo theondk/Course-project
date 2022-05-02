@@ -1,0 +1,1 @@
+export const officesSelector = state => state.offices

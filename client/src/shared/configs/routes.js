@@ -1,6 +1,9 @@
 export const routes = {
-	TERRITORIES: '/territories',
-	TERRITORY: '/territories/:id',
+	OFFICES: '/offices',
+	OFFICE: '/offices/:id',
 	LOGIN: '/login',
-	REGISTER: '/register'
+	REGISTER: '/register',
+	HISTORY: '/history',
+	USERS : '/users',
+	RECOVER: '/recover'
 }

@@ -10,4 +10,4 @@ public class TerritorialDistributionApplication {
 		SpringApplication.run(TerritorialDistributionApplication.class, args);
 	}
 
-}
+	}

@@ -1,0 +1,17 @@
+.CountryAddForm {
+    &__add {
+        position: absolute;
+        top: 0;
+        padding: 15px 25px;
+        cursor: pointer;
+        border-radius: 5px;
+        border: none;
+        background: linear-gradient(rgb(0, 214, 0) 0%, rgb(0, 177, 0) 100%);
+        color: white;
+        font-size: 1rem;
+        margin-right: 20px;
+        &:hover {
+            background: linear-gradient(rgb(0, 201, 0) 0%, rgb(0, 164, 0) 100%);
+        }
+    }
+}

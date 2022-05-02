@@ -7,5 +7,9 @@ import java.util.List;
 public interface UserKezikService {
     public boolean saveUser(UserKezik userKezik);
     public List<UserKezik> getAllUsers();
-    public boolean authUser(UserKezik userKezik);
+    public Object authUser(UserKezik userKezik);
+    public String deleteUser(Integer id);
+    public String roleHandler(Integer id, String motion);
+    public String activateUser(Integer id, Integer officeId);
+    public boolean recoverPassword(UserKezik userKezik);
 }

@@ -4,35 +4,55 @@ import { NavLink } from 'react-router-dom'
 import classnames from 'classnames/bind'
 import { useDispatch } from 'react-redux'
 
-import { toggleAuth } from 'slices/authSlice'
-import { authSelector } from 'slices/authSlice/selectors'
+import { toggleAuth } from 'shared/store/slices/authSlice'
+import { authSelector } from 'shared/store/slices/authSlice/selectors'
+import { routes } from 'shared/configs/routes'
 
 import styles from './styles.module.scss'
 
 const NavBar = () => {
 	const cn = classnames.bind(styles)
-	const { isAuth } = useSelector(authSelector)
+	const { isAuth, role, userOfficeId } = useSelector(authSelector)
 	const dispatch = useDispatch()
 
 	const logTabs = isAuth ?
 		<>
 			<NavLink 
-				className={styles.NavBar__link}
-				to="/owners"
-				className={({ isActive }) => (isActive ? cn(styles.NavBar__link, 'active') : styles.NavBar__link)}
-			>
-				Владельцы
-			</NavLink>
-			<NavLink 
 				className="nav-link" 
-				to="/territories"
+				to={routes.OFFICES}
 				className={({ isActive }) => (isActive ? cn(styles.NavBar__link, 'active') : styles.NavBar__link)}
 			>
-				Территории
+				Офисы
 			</NavLink>
+			{role === 'Администратор' &&
+				<>
+					<NavLink 
+						className="nav-link" 
+						to={routes.USERS}
+						className={({ isActive }) => (isActive ? cn(styles.NavBar__link, 'active') : styles.NavBar__link)}
+					>
+						Пользователи
+					</NavLink>
+					<NavLink
+						className="nav-link"
+						to={routes.HISTORY}
+						className={({ isActive }) => (isActive ? cn(styles.NavBar__link, 'active') : styles.NavBar__link)}
+					>
+						История
+					</NavLink>
+				</>
+			}
 			<div className={styles.NavBar__auth_wrapper}>
+				{(role === 'Управляющий' || role === 'Пользователь') &&
+					<NavLink
+						to={`/offices/${userOfficeId}`}
+						className={styles.NavBar__link}
+					>
+						Мой офис
+					</NavLink>
+				}
 				<NavLink 
-					to="/login"
+					to={routes.LOGIN}
 					className={({ isActive }) => (isActive ? cn(styles.NavBar__link, 'active') : styles.NavBar__link)}
 					onClick={() => dispatch(toggleAuth(false))}
 				>
@@ -42,7 +62,7 @@ const NavBar = () => {
 		</>
 		:
 		<div className={styles.NavBar__auth_wrapper}>
-			{[['Войти', '/login'], ['Регистрация', '/register']].map(item => {
+			{[['Войти',routes.LOGIN], ['Регистрация', routes.REGISTER]].map(item => {
 				return (
 					<NavLink
 						key={item}

@@ -2,8 +2,8 @@ import { Pagination } from '@mui/material'
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { fetchPages, changeActivePage } from 'slices/pagesSlice'
-import { pagesSelector } from 'slices/pagesSlice/selectors'
+import { fetchPages, changeActivePage } from 'shared/store/slices/pagesSlice'
+import { pagesSelector } from 'shared/store/slices/pagesSlice/selectors'
 
 const PaginationComponent = () => {
 	const { pagesCount, activePage } = useSelector(pagesSelector)

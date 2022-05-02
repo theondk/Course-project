@@ -1,6 +1,6 @@
 import { BrowserRouter } from 'react-router-dom'
 
-import AppRoutes from 'app/AppRoutes'
+import Pages from 'pages'
 import NavBar from 'shared/ui/NavBar'
 
 import './styles/main.scss'
@@ -9,7 +9,7 @@ function App() {
 	return (
 		<BrowserRouter>
 			<NavBar/>
-			<AppRoutes/>
+			<Pages/>
 		</BrowserRouter>
 	)
 }

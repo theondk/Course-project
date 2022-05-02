@@ -9,7 +9,7 @@ export default class KezikServices {
 				body
 			})
 
-			return method === 'GET' ? await res.json() : 1
+			return await method === 'GET' ? res.json() : 1
 		} catch(e) {
 			throw new Error(`Error code: ${e}`)
 		}
@@ -29,28 +29,32 @@ export default class KezikServices {
 		}
 	}
 
-	static getSomeTerritories = (offset = 0, limit = 0) => {
-		return this.resourcesReq(`${this._baseUrl}/territory/getAll?offset=${offset}&limit=${limit}`)
+	static getOffices = (offset = 0, limit = 0) => {
+		return this.resourcesReq(`${this._baseUrl}/office/getAll?offset=${offset}&limit=${limit}`)
 	}
 
-	static getTerritoriesCount = () => {
-		return this.resourcesReq(`${this._baseUrl}/territory/getCount`)
+	static getFilterOffices = () => {
+		return this.resourcesReq(`${this._baseUrl}/office/getByFilter`)
 	}
 
-	static getTerritory = (id) => {
-		return this.resourcesReq(`${this._baseUrl}/territory/getAll/${id}`)
+	static getOfficesCount = () => {
+		return this.resourcesReq(`${this._baseUrl}/office/getCount`)
 	}
 
-	static addTerritory = (body) => {
-		return this.resourcesReq(`${this._baseUrl}/territory/add`, 'POST', JSON.stringify(body))
+	static getOffice = (id) => {
+		return this.resourcesReq(`${this._baseUrl}/office/getAll/${id}`)
 	}
 
-	static deleteTerritory = (id) => {
-		return this.resourcesReq(`${this._baseUrl}/territory/deleteOne/${id}`, 'DELETE')
+	static addOffice = (body) => {
+		return this.resourcesReq(`${this._baseUrl}/office/add`, 'POST', JSON.stringify(body))
 	}
 
-	static updateTerritory = (id, body) => {
-		return this.resourcesReq(`${this._baseUrl}/territory/edit/${id}`, 'PUT', JSON.stringify(body))
+	static deleteOffice = (id) => {
+		return this.resourcesReq(`${this._baseUrl}/office/deleteOne/${id}`, 'DELETE')
+	}
+
+	static updateOffice = (id, body) => {
+		return this.resourcesReq(`${this._baseUrl}/office/edit/${id}`, 'PUT', JSON.stringify(body))
 	}
 
 	static login = (body) => {
@@ -59,5 +63,9 @@ export default class KezikServices {
 
 	static register = (body) => {
 		return this.authReq(`${this._baseUrl}/user/add`, 'POST', JSON.stringify(body))
+	}
+
+	static recoverPassword = (body) => {
+		return this.authReq(`${this._baseUrl}/user/recover`, 'PUT', JSON.stringify(body))
 	}
 }
