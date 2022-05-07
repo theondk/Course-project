@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface TaskKezikService {
-    public TaskKezik saveTask(TaskKezik taskKezik);
+    public TaskKezik saveTask(TaskKezik taskKezik, int userId);
     public List<TaskKezik> getAllTasks();
     public int getTasksCount();
     public Optional<TaskKezik> getTaskById(Integer id);

@@ -10,13 +10,15 @@ const RecoverFromHistory = ({id, name, description, userId, price}) => {
 	const dispatch = useDispatch()
 	
 	const onRecover = async () => {
-		await TasksKezikService.addTask({
-			name,
-			description,
-			price,
-			userId
-		})
 		await HistoryKezikService.deleteFromHistory(id)
+		await TasksKezikService.addTask(
+			{
+				name,
+				description,
+				price
+			}, 
+			userId
+		)
 		dispatch(fetchHistory())
 	}
 

@@ -15,9 +15,9 @@ public class OfficeKezikController {
     @Autowired
     private OfficeKezikService officeKezikService;
 
-    @PostMapping("/add")
-    public String add(@RequestBody OfficeKezik officeKezik) {
-        officeKezikService.saveOffice(officeKezik);
+    @PostMapping("/add/{id}")
+    public String add(@RequestBody OfficeKezik officeKezik, @PathVariable int id) {
+        officeKezikService.saveOffice(officeKezik, id);
         return "new office was create";
     }
 
@@ -47,9 +47,9 @@ public class OfficeKezikController {
         return "office was deleted";
     }
 
-    @PutMapping("/edit/{id}")
-    public String edit(@PathVariable Integer id, @RequestBody OfficeKezik officeKezik) {
-        officeKezikService.editOffice(id, officeKezik);
+    @PutMapping("/edit/{id}/{countryId}")
+    public String edit(@PathVariable Integer id, @RequestBody OfficeKezik officeKezik, @PathVariable int countryId) {
+        officeKezikService.editOffice(id, officeKezik, countryId);
         return "office was updated";
     }
 }

@@ -6,12 +6,12 @@ import { fetchTasks } from 'shared/store/slices/tasksSlice'
 import styles from './styles.module.scss'
 import HistoryKezikService from 'shared/api/history'
 
-const TaskComplete = ({ id, history }) => {
+const TaskComplete = ({ taskId, userId, history }) => {
 	const dispatch = useDispatch()
 
 	const onComplete = async () => {
-		HistoryKezikService.addInHistory(history)
-		await TasksKezikService.deleteTask(id)
+		HistoryKezikService.addInHistory(history, taskId, userId)
+		await TasksKezikService.deleteTask(taskId)
 		dispatch(fetchTasks())
 	}
 

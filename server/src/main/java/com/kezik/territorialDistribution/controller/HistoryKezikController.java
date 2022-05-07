@@ -14,10 +14,10 @@ public class HistoryKezikController {
     @Autowired
     private HistoryKezikService historyKezikService;
 
-    @PostMapping("/add")
-    public String saveInHistory(@RequestBody HistoryKezik historyKezik) {
-        historyKezikService.saveInHistory(historyKezik);
-        return "territory was create";
+    @PostMapping("/add/{taskId}/{userId}")
+    public String saveInHistory(@RequestBody HistoryKezik historyKezik, @PathVariable  int taskId, @PathVariable int userId) {
+        historyKezikService.saveInHistory(historyKezik, taskId, userId);
+        return "task created";
     }
 
     @GetMapping("/getAll")
@@ -28,6 +28,6 @@ public class HistoryKezikController {
     @DeleteMapping("/deleteOne/{id}")
     public String deleteFromHistory(@PathVariable int id) {
         historyKezikService.deleteFromHistory(id);
-        return "territory removed from history";
+        return "task removed from history";
     }
 }

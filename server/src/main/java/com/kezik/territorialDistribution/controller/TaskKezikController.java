@@ -15,9 +15,9 @@ public class TaskKezikController {
     @Autowired
     private TaskKezikService taskKezikService;
 
-    @PostMapping("/add")
-    public String add(@RequestBody TaskKezik taskKezik) {
-        taskKezikService.saveTask(taskKezik);
+    @PostMapping("/add/{userId}")
+    public String add(@RequestBody TaskKezik taskKezik, @PathVariable int userId) {
+        taskKezikService.saveTask(taskKezik, userId);
         return "new task created";
     }
 

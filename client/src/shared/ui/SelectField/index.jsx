@@ -13,7 +13,7 @@ const SelectField = ({ label, list, ...props }) => {
 				{...props}
 				{...field}
 			>
-				{list.map(({id, name, city, username}) => {
+				{list.map(({ id, name, city, username }) => {
 					return <MenuItem key={id} value={id}>{name ? name : city ? city : username}</MenuItem>
 				})}
 			</Select>

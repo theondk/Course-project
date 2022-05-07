@@ -1,57 +1,48 @@
 package com.kezik.territorialDistribution.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
-public class UserKezik {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+@Getter
+@Setter
+public class UserKezik extends BaseModelFields {
     private String username;
     private String password;
     private String role;
     private String phrase;
     private String status;
-    private int officeId;
+
+    @ManyToOne()
+    OfficeKezik office;
+
+    @OneToMany()
+    List<TaskKezik> task;
+
+    @OneToMany()
+    List<HistoryKezik> history;
 
     public UserKezik() { }
 
-    public int getId() { return id; }
+    public UserKezik(UserKezik userKezik) {
+        this.setId(userKezik.getId());
+        this.office = userKezik.getOffice();
+        this.password = userKezik.getPassword();
+        this.username = userKezik.getUsername();
+        this.role = userKezik.getRole();
+        this.phrase = userKezik.getPhrase();
+        this.status = userKezik.getStatus();
+    }
 
-    public void setId(int id) { this.id = id; }
-
-    public String getUsername() { return username; }
-
-    public void setUsername(String username) {
+    public UserKezik(String username, String password, String role, String phrase, String status, OfficeKezik office) {
         this.username = username;
+        this.password = password;
+        this.phrase = phrase;
+        this.status = status;
+        this.role = role;
+        this.office = office;
     }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) { this.password = password; }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) { this.role = role; }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) { this.status = status; }
-
-    public int getOfficeId() { return officeId; }
-
-    public void setOfficeId(int officeId) { this.officeId = officeId; }
-
-    public String getPhrase() { return phrase; }
-
-    public void setPhrase(String phrase) { this.phrase = phrase; }
 }

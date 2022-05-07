@@ -23,8 +23,8 @@ export default class TasksKezikService {
 		return this.resourcesReq(`${this._baseUrl}/task/deleteOne/${id}`, 'DELETE')
 	}
 
-	static addTask = (body) => {
-		return this.resourcesReq(`${this._baseUrl}/task/add`, 'POST', JSON.stringify(body))
+	static addTask = (body, userId) => {
+		return this.resourcesReq(`${this._baseUrl}/task/add/${userId}`, 'POST', JSON.stringify(body))
 	}
 
 	static getUserTasks = (id) => {

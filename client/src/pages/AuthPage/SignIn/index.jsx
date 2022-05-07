@@ -24,9 +24,9 @@ const SignIn = () => {
 			onSubmit = {async (values) => {
 				try {
 					const resp = await KezikServices.login(values)
-					if (resp !== false && resp.status !== 'Ожидание активации') {
+					if (resp && resp.status !== 'Ожидание активации') {
 						dispatch(toggleAuth(true))
-						dispatch(rememberUser({ username: values.username, id: resp.id, role: resp.role, officeId: resp.officeId }))
+						dispatch(rememberUser({ username: values.username, id: resp.id, role: resp.role, officeId: resp.office ? resp.office.id : 0 }))
 						navigate('/offices')
 					} else {
 						resp.status === 'Ожидание активации' ? alert('Дождитесь пока администратор одобрит ваш запрос на регистрацию') : alert('Неверный логин или пароль')

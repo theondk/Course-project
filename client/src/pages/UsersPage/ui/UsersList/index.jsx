@@ -33,7 +33,7 @@ const UsersList = () => {
 const View = ({ users }) => {
 	const { offices } = useSelector(officesSelector)
 
-	const content = users.map(({ id, username, role, status, officeId }) => {
+	const content = users.map(({ id, username, role, status, office }) => {
 		return (
 			<div key={username} className={styles.UsersList__item}>
 				<div>	
@@ -42,7 +42,7 @@ const View = ({ users }) => {
 					{ role !== 'Администратор' &&
 						<>
 							<p>Статус: {status}</p>
-							{ status === 'Активен' && <p>Офис: {offices[offices.findIndex(item => item.id === officeId)].city}</p> }
+							{ status === 'Активен' && <p>Офис: {offices[offices.findIndex(item => item.id === office.id)].city}</p> }
 						</>
 					}
 				</div>

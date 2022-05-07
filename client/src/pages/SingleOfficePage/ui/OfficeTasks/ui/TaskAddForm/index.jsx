@@ -9,11 +9,13 @@ import { usersSelector } from 'shared/store/slices/usersSlice/selectors'
 import TasksKezikService from 'shared/api/tasks'
 import { fetchUsers } from 'shared/store/slices/usersSlice'
 import { fetchTasks } from 'shared/store/slices/tasksSlice'
+import { authSelector } from 'shared/store/slices/authSlice/selectors'
 
 import styles from './styles.module.scss'
 
 const TaskAddForm = () => {
 	const { users } = useSelector(usersSelector)
+	const { userOfficeId } = useSelector(authSelector)
 	const dispatch = useDispatch()
 
 	useEffect(() => {
@@ -30,9 +32,8 @@ const TaskAddForm = () => {
 					price: 0
 				}}
 				onSubmit={async (values) => {
-					console.log(values)
 					if (values.userId !== 0) {
-						await TasksKezikService.addTask(values)
+						await TasksKezikService.addTask({name: values.name, description: values.description, price: values.price}, values.userId)
 						dispatch(fetchTasks())
 					}
 				}}
@@ -56,7 +57,7 @@ const TaskAddForm = () => {
 					<TextInput className="form__input" label="Название" name="name" id="name" placeholder="Название (3-20 символов)" />
 					<TextInput className="form__input" label="Описание" name="description" id="description" placeholder="Описание (10-100 символов)" />
 					<TextInput className="form__input" label="Оплата" name="price" id="price" placeholder="Оплата (в BYN)" />
-					<SelectField list={users.filter(({ role }) => role !== 'Администратор' && role !== 'Управляющий')} label="Пользователь" name="userId" id="userId" />
+					<SelectField list={users.filter(({ role, office }) => role !== 'Администратор' && role !== 'Управляющий' && office.id === userOfficeId )} label="Пользователь" name="userId" id="userId" />
 					<button type="submit" className="form__btn">Добавить</button>
 				</Form>
 			</Formik>

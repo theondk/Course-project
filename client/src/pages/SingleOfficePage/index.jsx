@@ -41,6 +41,7 @@ const SingleOfficePage = () => {
 const View = ({office: {city, description, userId}, users}) => {
 	const { id } = useParams()
 	const { currentUserId, role } = useSelector(authSelector)
+	console.log(users)
 
 	return (
 		<div className={styles.SingleTerritoryPage__item}>
@@ -48,7 +49,7 @@ const View = ({office: {city, description, userId}, users}) => {
 			<div className={styles.SingleTerritoryPage__employee}>
 				<p className={styles.SingleTerritoryPage__descr}>Сотрудники этого офиса: </p>
 				<div className={styles.SingleTerritoryPage__employee_list}>
-					{users.filter(item => item.officeId === Number(id)).map(item => {
+					{users.filter(item => item.role !== 'Администратор').filter(item => item.office.id === Number(id)).map(item => {
 						return <p key={item.id}>{item.username}: {item.role}</p>
 					})}
 				</div>

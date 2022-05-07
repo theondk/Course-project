@@ -37,7 +37,7 @@ const OfficesList = () => {
 }
 
 const View = ({offices, selectedCountry}) => {
-	const cards = offices.map(({id, city, countryId}) => {
+	const cards = offices.map(({ id, city, country: { id: countryId }}) => {
 		if (selectedCountry === countryId || selectedCountry === 0) {
 			return (
 				<Link tabIndex="0" to={`/offices/${id}`} key={id} className={styles.TerritoriesList__card}>

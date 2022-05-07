@@ -24,7 +24,7 @@ const OfficeTasks = () => {
 		dispatch(fetchTasks())
 	}, [])
 
-	const content = (users.length !== 0) && <View users={users} tasks={tasks}/>
+	const content = (users.length !== 0) && <View users={users} tasks={tasks} officeId={Number(id)} />
 
 	return (
 		<section className={styles.OfficeTasks}>
@@ -40,9 +40,8 @@ const OfficeTasks = () => {
 	)
 }
 
-const View = ({ tasks, users }) => {
+const View = ({ tasks, users, officeId }) => {
 	const [usd, setUsd] = useState(0)
-
 	useEffect(() => {
 		fetch('https://developerhub.alfabank.by:8273/partner/1.0.1/public/rates')
 			.then((data) => data.json())
@@ -58,7 +57,7 @@ const View = ({ tasks, users }) => {
 		}
 	})
 
-	const content = tasks.filter(item => officeUsers.includes(item.userId)).map(({ id: taskId, userId, name, description, price }) => {
+	const content = tasks.filter(item => officeUsers.includes(item.userId) && item.user.office.id === officeId).map(({ id: taskId, user: { id: userId }, name, description, price }) => {
 		return (
 			<li className={styles.OfficeTasks__item} key={taskId}>
 				<p>Задание: {name}</p>
@@ -66,8 +65,8 @@ const View = ({ tasks, users }) => {
 				<p>Оплата: {price} BYN</p>
 				<p>Оплата в USD: {usd && (price / usd).toFixed(2)} USD</p>
 				<p>Пользователь: {users.filter(item => item.id === userId)[0].username}</p>
-				{(userOfficeId === Number(id) && role === 'Управляющий') && <TaskDelete history={{ taskId, userId, name, description, price, state: 'Удалено' }} id={taskId} />}
-				{userId === currentUserId && <TaskComplete history={{ taskId, userId, name, description, price, state: 'Завершено' }} id={taskId} />}
+				{(userOfficeId === Number(id) && role === 'Управляющий') && <TaskDelete userId={userId} history={{ name, description, price, state: 'Удалено' }} taskId={taskId} />}
+				{userId === currentUserId && <TaskComplete taskId={taskId} userId={userId} history={{ name, description, price, state: 'Завершено' }} />}
 			</li>
 		)
 	})

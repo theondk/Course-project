@@ -1,9 +1,9 @@
 package com.kezik.territorialDistribution.service;
 
-import com.kezik.territorialDistribution.model.HistoryKezik;
 import com.kezik.territorialDistribution.model.TaskKezik;
 import com.kezik.territorialDistribution.repository.HistoryKezikRepository;
 import com.kezik.territorialDistribution.repository.TaskKezikRepository;
+import com.kezik.territorialDistribution.repository.UserKezikRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,10 +15,14 @@ public class TaskKezikServiceImpl implements TaskKezikService {
 
     @Autowired
     private TaskKezikRepository taskKezikRepository;
+    @Autowired
     private HistoryKezikRepository historyKezikRepository;
+    @Autowired
+    private UserKezikRepository userKezikRepository;
 
     @Override
-    public TaskKezik saveTask(TaskKezik taskKezik) {
+    public TaskKezik saveTask(TaskKezik taskKezik, int userId) {
+        taskKezik.setUser(userKezikRepository.getById(userId));
         return taskKezikRepository.save(taskKezik);
     }
 

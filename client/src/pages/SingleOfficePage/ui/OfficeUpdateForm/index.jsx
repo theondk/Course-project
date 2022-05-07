@@ -44,7 +44,7 @@ const OfficeUpdateForm = ({id}) => {
 						countryId: 0
 					}}
 					onSubmit={async (values) => {
-						await KezikServices.updateOffice(id, values)
+						await KezikServices.updateOffice(id, { city: values.city }, values.countryId)
 						modalRef.current[0].style.display = 'none'
 						modalRef.current[1].style.display = 'none'
 						dispatch(fetchOffices([activePage - 1, limit]))

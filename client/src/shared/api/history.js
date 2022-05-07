@@ -21,8 +21,8 @@ export default class HistoryKezikService {
 		return this.resourcesReq(`${this._baseUrl}/history/getAll`)
 	}
 
-	static addInHistory = (body) => {
-		return this.resourcesReq(`${this._baseUrl}/history/add`, 'POST', JSON.stringify(body))
+	static addInHistory = (body, taskId, userId) => {
+		return this.resourcesReq(`${this._baseUrl}/history/add/${taskId}/${userId}`, 'POST', JSON.stringify(body))
 	}
 
 	static deleteFromHistory = (id) => {

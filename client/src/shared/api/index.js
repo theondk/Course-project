@@ -45,16 +45,16 @@ export default class KezikServices {
 		return this.resourcesReq(`${this._baseUrl}/office/getAll/${id}`)
 	}
 
-	static addOffice = (body) => {
-		return this.resourcesReq(`${this._baseUrl}/office/add`, 'POST', JSON.stringify(body))
+	static addOffice = (body, id) => {
+		return this.resourcesReq(`${this._baseUrl}/office/add/${id}`, 'POST', JSON.stringify(body))
 	}
 
 	static deleteOffice = (id) => {
 		return this.resourcesReq(`${this._baseUrl}/office/deleteOne/${id}`, 'DELETE')
 	}
 
-	static updateOffice = (id, body) => {
-		return this.resourcesReq(`${this._baseUrl}/office/edit/${id}`, 'PUT', JSON.stringify(body))
+	static updateOffice = (id, body, countryId) => {
+		return this.resourcesReq(`${this._baseUrl}/office/edit/${id}/${countryId}`, 'PUT', JSON.stringify(body))
 	}
 
 	static login = (body) => {

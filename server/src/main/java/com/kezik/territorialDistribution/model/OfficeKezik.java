@@ -1,35 +1,32 @@
 package com.kezik.territorialDistribution.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
-public class OfficeKezik {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+@Getter
+@Setter
+public class OfficeKezik extends BaseModelFields {
     private String city;
-    private int countryId;
+
+    @ManyToOne()
+    private CountryKezik country;
+
+    @OneToMany()
+    List<UserKezik> user;
 
     public OfficeKezik() { }
 
-    public int getId() { return id; }
-
-    public void setId(int id) {
-        this.id = id;
+    public OfficeKezik(OfficeKezik officeKezik) {
+        this.setId(officeKezik.getId());
+        this.country = officeKezik.getCountry();
     }
 
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
+    public OfficeKezik(String city, CountryKezik country) {
         this.city = city;
+        this.country = country;
     }
-
-    public int getCountryId() { return countryId; }
-
-    public void setCountryId(int countryId) { this.countryId = countryId; }
 }

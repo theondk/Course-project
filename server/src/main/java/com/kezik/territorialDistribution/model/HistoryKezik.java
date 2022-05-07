@@ -1,73 +1,38 @@
 package com.kezik.territorialDistribution.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.*;
 
 @Entity
-public class HistoryKezik {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+@Getter
+@Setter
+public class HistoryKezik extends BaseModelFields {
     private String name;
     private String description;
     private String state;
     private String price;
-    private int taskId;
-    private int userId;
+
+    @ManyToOne()
+    UserKezik user;
 
     public HistoryKezik() { }
 
-    public int getId() { return id; }
-
-    public void setId(int id) {
-        this.id = id;
+    public HistoryKezik(HistoryKezik historyKezik) {
+        this.setId(historyKezik.getId());
+        this.name = historyKezik.getName();
+        this.description = historyKezik.getDescription();
+        this.state = historyKezik.getState();
+        this.price = historyKezik.getPrice();
+        this.user = historyKezik.getUser();
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
+    public HistoryKezik(String name, String description, String state, String price, UserKezik user) {
         this.name = name;
-    }
-
-    public void setDescription(String description) {
         this.description = description;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
         this.state = state;
-    }
-
-    public int getTaskId() {
-        return taskId;
-    }
-
-    public void setTaskId(int taskId) {
-        this.taskId = taskId;
-    }
-
-    public int getUserId() { return userId; }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    public String getPrice() {
-        return price;
-    }
-
-    public void setPrice(String price) {
         this.price = price;
+        this.user = user;
     }
 }

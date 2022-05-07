@@ -1,6 +1,7 @@
 package com.kezik.territorialDistribution.service;
 
 import com.kezik.territorialDistribution.model.OfficeKezik;
+import com.kezik.territorialDistribution.repository.CountryKezikRepository;
 import com.kezik.territorialDistribution.repository.OfficeKezikRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -16,9 +17,12 @@ public class OfficeKezikServiceImpl implements OfficeKezikService {
 
     @Autowired
     private OfficeKezikRepository officeKezikRepository;
+    @Autowired
+    private CountryKezikRepository countryKezikRepository;
 
     @Override
-    public OfficeKezik saveOffice(OfficeKezik officeKezik) {
+    public OfficeKezik saveOffice(OfficeKezik officeKezik, int id) {
+        officeKezik.setCountry(countryKezikRepository.getById(id));
         return officeKezikRepository.save(officeKezik);
     }
 
@@ -29,7 +33,6 @@ public class OfficeKezikServiceImpl implements OfficeKezikService {
         result.addAll(page.getContent());
         return result;
     }
-
 
     @Override
     public List<OfficeKezik> getAllOfficesByFilter() {
@@ -52,8 +55,9 @@ public class OfficeKezikServiceImpl implements OfficeKezikService {
     }
 
     @Override
-    public OfficeKezik editOffice(int id, OfficeKezik officeKezik) {
+    public OfficeKezik editOffice(int id, OfficeKezik officeKezik, int countryId) {
         officeKezik.setId(id);
+        officeKezik.setCountry(countryKezikRepository.getById(countryId));
         officeKezik.setCity(officeKezik.getCity());
         return officeKezikRepository.save(officeKezik);
     }

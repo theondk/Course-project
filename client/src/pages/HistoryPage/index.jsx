@@ -34,17 +34,17 @@ const HistoryPage = () => {
 }
 
 const View = ({ history }) => {
-	const content = history.map(({ id, name, description, state, price, userId }) => {
+	const content = history.map(({ id, name, description, state, price, user }) => {
 		return (
 			<li key={id} className={styles.HistoryPage__item}>
 				<p className={styles.HistoryPage__item_text}>Задание: {name}</p>
 				<p className={styles.HistoryPage__item_text}>Описание: {description}</p>
 				<p className={styles.HistoryPage__item_text}>Статус: {state}</p>
 				<p className={styles.HistoryPage__item_text}>Оплата: {price} BYN</p>
-				<p className={styles.HistoryPage__item_text}>Уникальный идентификатор пользователя: {userId}</p>
+				<p className={styles.HistoryPage__item_text}>Уникальный идентификатор пользователя: {user.id}</p>
 				<div className={styles.HistoryPage__item_btns}>
 					<DeleteFromHistory id={id}/>
-					<RecoverFromHistory id={id} price={price} description={description} name={name} userId={userId}/>
+					<RecoverFromHistory id={id} price={price} description={description} name={name} userId={user.id}/>
 				</div>
 			</li>
 		)
