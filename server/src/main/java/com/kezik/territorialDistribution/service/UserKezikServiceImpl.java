@@ -44,7 +44,7 @@ public class UserKezikServiceImpl implements UserKezikService {
 
         UserKezik res = validatorKezik.validateUserData(users, userKezik);
         if (res != null) {
-            Singleton.getInstance().saveLog("Пользователь " + res.getUsername() + " вошёл в систему");
+            Singleton.getInstance().saveLog("Пользователь " + res.getUsername() + " вошёл в систему", "logs.txt");
             return res;
         }
 

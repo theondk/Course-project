@@ -1,7 +1,7 @@
 package com.kezik.territorialDistribution.patterns.iterator;
 
 public class Validate implements Collection {
-    private String dataOnValidate[];
+    private final String[] dataOnValidate;
 
     public Validate(String[] dataOnValidate) {
         this.dataOnValidate = dataOnValidate;

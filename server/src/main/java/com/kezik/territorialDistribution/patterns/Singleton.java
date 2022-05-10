@@ -6,7 +6,6 @@ import java.util.Date;
 
 public class Singleton {
     private static Singleton date;
-    private static String PATH_TO_LOG_FILE = "logs.txt";
 
     public static synchronized Singleton getInstance() {
         if (date == null) {
@@ -16,11 +15,11 @@ public class Singleton {
         return date;
     }
 
-    public void saveLog(String log) {
+    public void saveLog(String log, String path) {
         try {
             Date currentDate = new Date();
             String logFile = log + ": " + currentDate + "\n";
-            FileWriter fw = new FileWriter(PATH_TO_LOG_FILE, true);
+            FileWriter fw = new FileWriter(path, true);
             fw.append(logFile);
             fw.close();
         } catch (IOException e) {
