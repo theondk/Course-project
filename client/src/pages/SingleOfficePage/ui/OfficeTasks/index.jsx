@@ -63,7 +63,7 @@ const View = ({ tasks, users, officeId }) => {
 				<p>Задание: {name}</p>
 				<p>Описание: {description}</p>
 				<p>Оплата: {price} BYN</p>
-				<p>Оплата в USD: {usd && (price / usd).toFixed(2)} USD</p>
+				<p>Оплата в USD: {(price / 2.61).toFixed(2)} USD</p>
 				<p>Пользователь: {users.filter(item => item.id === userId)[0].username}</p>
 				{(userOfficeId === Number(id) && role === 'Управляющий') && <TaskDelete userId={userId} history={{ name, description, price, state: 'Удалено' }} taskId={taskId} />}
 				{userId === currentUserId && <TaskComplete taskId={taskId} userId={userId} history={{ name, description, price, state: 'Завершено' }} />}

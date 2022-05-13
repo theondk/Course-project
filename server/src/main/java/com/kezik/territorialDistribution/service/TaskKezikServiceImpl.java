@@ -37,13 +37,14 @@ public class TaskKezikServiceImpl implements TaskKezikService {
     }
 
     @Override
-    public Optional<TaskKezik> getTaskById(Integer id) {
-        return taskKezikRepository.findById(id);
+    public TaskKezik getTaskById(Integer id) {
+        return taskKezikRepository.getById(id);
     }
 
     @Override
-    public void deleteTask(int id) {
+    public Boolean deleteTask(int id) {
         taskKezikRepository.deleteById(id);
+        return true;
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.kezik.territorialDistribution.controller;
 
 import com.kezik.territorialDistribution.model.UserKezik;
 import com.kezik.territorialDistribution.service.UserKezikService;
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -40,7 +41,7 @@ public class UserKezikController {
     }
 
     @PutMapping("/role/handler/{id}/{motion}")
-    public String roleHandler(@PathVariable Integer id, @PathVariable String motion) {
+    public UserKezik roleHandler(@PathVariable Integer id, @PathVariable String motion) {
         return userKezikService.roleHandler(id, motion);
     }
 

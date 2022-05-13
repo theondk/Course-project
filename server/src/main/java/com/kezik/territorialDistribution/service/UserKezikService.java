@@ -9,7 +9,7 @@ public interface UserKezikService {
     public List<UserKezik> getAllUsers();
     public Object authUser(UserKezik userKezik);
     public String deleteUser(Integer id);
-    public String roleHandler(Integer id, String motion);
+    public UserKezik roleHandler(Integer id, String motion);
     public String activateUser(Integer id, Integer officeId);
     public boolean recoverPassword(UserKezik userKezik);
 }

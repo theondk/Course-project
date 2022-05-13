@@ -37,14 +37,13 @@ public class TaskKezikController {
     }
 
     @GetMapping("/getAll/{id}")
-    public Optional<TaskKezik> getTaskById(@PathVariable Integer id) {
+    public TaskKezik getTaskById(@PathVariable Integer id) {
         return taskKezikService.getTaskById(id);
     }
 
     @DeleteMapping("/deleteOne/{id}")
-    public String manageTask(@PathVariable int id) {
-        taskKezikService.deleteTask(id);
-        return "task deleted";
+    public Boolean manageTask(@PathVariable int id) {
+        return taskKezikService.deleteTask(id);
     }
 
     @PutMapping("/edit/{id}")

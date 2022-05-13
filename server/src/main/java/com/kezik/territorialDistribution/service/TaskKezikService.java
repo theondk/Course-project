@@ -9,8 +9,8 @@ public interface TaskKezikService {
     public TaskKezik saveTask(TaskKezik taskKezik, int userId);
     public List<TaskKezik> getAllTasks();
     public int getTasksCount();
-    public Optional<TaskKezik> getTaskById(Integer id);
-    public void deleteTask(int id);
+    public TaskKezik getTaskById(Integer id);
+    public Boolean deleteTask(int id);
     public TaskKezik editTask(int id, TaskKezik taskKezik);
     public List<TaskKezik> getTasksByUserId(Integer id);
 }

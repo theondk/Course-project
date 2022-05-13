@@ -1,7 +1,7 @@
-package com.kezik.territorialDistribution.repository;
+package com.kezik.territorialDistribution.service;
 
-import com.kezik.territorialDistribution.TerritorialDistributionApplication;
 import com.kezik.territorialDistribution.model.CountryKezik;
+import com.kezik.territorialDistribution.repository.CountryKezikRepository;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

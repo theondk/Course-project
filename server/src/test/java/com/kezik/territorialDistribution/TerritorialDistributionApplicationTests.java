@@ -4,8 +4,6 @@ import com.kezik.territorialDistribution.controller.CountryKezikController;
 import com.kezik.territorialDistribution.controller.HistoryKezikController;
 import com.kezik.territorialDistribution.controller.OfficeKezikController;
 import com.kezik.territorialDistribution.controller.TaskKezikController;
-import com.kezik.territorialDistribution.model.TaskKezik;
-import com.kezik.territorialDistribution.model.UserKezik;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -46,5 +44,4 @@ class TerritorialDistributionApplicationTests {
 	void testContextLoadsShouldLoadTaskKezikController() {
 		assertThat(taskKezikController).isNotNull();
 	}
-
 }

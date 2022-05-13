@@ -3,8 +3,6 @@ package com.kezik.territorialDistribution.patterns;
 import org.junit.Assert;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 public class SingletonTest {
 
     private static String PATH_TO_LOG_FILE = "logs.txt";

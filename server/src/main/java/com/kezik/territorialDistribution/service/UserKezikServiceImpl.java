@@ -79,20 +79,14 @@ public class UserKezikServiceImpl implements UserKezikService {
     }
 
     @Override
-    public String roleHandler(Integer id, String motion) {
+    public UserKezik roleHandler(Integer id, String motion) {
         UserKezik userKezik = userKezikRepository.getById(id);
         if (motion.equals("dec")) {
             userKezik.setRole("Пользователь");
         } else {
-            if (userKezik.getRole().equals("Пользователь")) {
-                userKezik.setRole("Управляющий");
-            } else {
-                userKezik.setRole("Администратор");
-//                userKezik.setOfficeId(0);
-            }
+            userKezik.setRole("Управляющий");
         }
 
-        userKezikRepository.save(userKezik);
-        return "role changed";
+        return userKezikRepository.save(userKezik);
     }
 }

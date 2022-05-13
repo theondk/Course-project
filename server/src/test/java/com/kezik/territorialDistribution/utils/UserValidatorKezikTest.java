@@ -3,7 +3,6 @@ package com.kezik.territorialDistribution.utils;
 import com.kezik.territorialDistribution.model.CountryKezik;
 import com.kezik.territorialDistribution.model.OfficeKezik;
 import com.kezik.territorialDistribution.model.UserKezik;
-import org.apache.catalina.User;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -67,6 +66,4 @@ private final UserValidatorKezik validator = new UserValidatorKezik();
         UserKezik result = validator.validateUserData(users, new UserKezik("a345", "a324","a", "a123", "a", new OfficeKezik("a", new CountryKezik("a"))));
         Assert.assertNull(result);
     }
-
-
 }

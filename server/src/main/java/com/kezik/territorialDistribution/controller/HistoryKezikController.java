@@ -15,9 +15,8 @@ public class HistoryKezikController {
     private HistoryKezikService historyKezikService;
 
     @PostMapping("/add/{taskId}/{userId}")
-    public String saveInHistory(@RequestBody HistoryKezik historyKezik, @PathVariable  int taskId, @PathVariable int userId) {
-        historyKezikService.saveInHistory(historyKezik, taskId, userId);
-        return "task created";
+    public HistoryKezik saveInHistory(@RequestBody HistoryKezik historyKezik, @PathVariable  int taskId, @PathVariable int userId) {
+        return historyKezikService.saveInHistory(historyKezik, taskId, userId);
     }
 
     @GetMapping("/getAll")

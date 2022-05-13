@@ -3,13 +3,11 @@ package com.kezik.territorialDistribution.patterns.iterator;
 import org.junit.Assert;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 public class ValidateTest {
 
     @Test
     public void testGetIterator() {
-        String[] data = new String[] {"Dima", "Sasha"};
+        String[] data = new String[] {"Dima", "Maksim", "Sasha"};
         Validate validate = new Validate(data);
         Iterator iterator = validate.getIterator();
 
@@ -18,7 +16,7 @@ public class ValidateTest {
 
     @Test
     public void testGetIteratorShouldHasNext() {
-        String[] data = new String[] {"Dima", "Sasha"};
+        String[] data = new String[] {"Dima", "Maksim", "Sasha"};
         Validate validate = new Validate(data);
         Iterator iterator = validate.getIterator();
 

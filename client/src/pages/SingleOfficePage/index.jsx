@@ -41,7 +41,6 @@ const SingleOfficePage = () => {
 const View = ({office: {city, description, userId}, users}) => {
 	const { id } = useParams()
 	const { currentUserId, role } = useSelector(authSelector)
-	console.log(users)
 
 	return (
 		<div className={styles.SingleTerritoryPage__item}>
